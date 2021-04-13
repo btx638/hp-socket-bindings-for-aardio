@@ -119,7 +119,7 @@ disconnectLongConnections = function(period,force){
 	return _dll.HP_Agent_DisconnectLongConnectionsB(owner.pAgent, period, force);
 }
 
-disconnectSilenceConnections = function(period,force){
+disconnectSilenceConnections = function(period, force){
 	return _dll.HP_Agent_DisconnectSilenceConnectionsB(owner.pAgent, period, force);
 }	
 	
@@ -264,8 +264,7 @@ sendPolicy = {
 onSendSyncPolicy = {
     _get = function(){
     	return _dll.HP_Agent_GetOnSendSyncPolicy(owner.pAgent); 
-    }
-    
+    };    
     _set = function(v){
     	_dll.HP_Agent_SetOnSendSyncPolicy(owner.pAgent, v);
     } 
@@ -274,8 +273,7 @@ onSendSyncPolicy = {
 freeSocketObjLockTime = {
     _get = function(){
     	return _dll.HP_Agent_GetFreeSocketObjLockTime(owner.pAgent); 
-    }
-    
+    };    
     _set = function(v){
     	_dll.HP_Agent_SetFreeSocketObjLockTime(owner.pAgent, v);
     } 
@@ -284,8 +282,7 @@ freeSocketObjLockTime = {
 freeSocketObjPool = {
     _get = function(){
     	return _dll.HP_Agent_GetFreeSocketObjPool(owner.pAgent); 
-    }
-    
+    };   
     _set = function(v){
     	_dll.HP_Agent_SetFreeSocketObjPool(owner.pAgent, v);
     } 
@@ -294,8 +291,7 @@ freeSocketObjPool = {
 freeBufferObjPool = {
     _get = function(){
     	return _dll.HP_Agent_GetFreeSocketObjPool(owner.pAgent); 
-    }
-    
+    };  
     _set = function(v){
     	_dll.HP_Agent_SetFreeBufferObjPool(owner.pAgent, v);
     } 
@@ -304,8 +300,7 @@ freeBufferObjPool = {
 freeSocketObjHold = {
     _get = function(){
     	return _dll.HP_Agent_GetFreeBufferObjPool(owner.pAgent); 
-    }
-    
+    };    
     _set = function(v){
     	_dll.HP_Agent_SetFreeSocketObjHold(owner.pAgent, v);
     } 
@@ -314,8 +309,7 @@ freeSocketObjHold = {
 freeBufferObjHold = {
     _get = function(){
     	return _dll.HP_Agent_GetFreeBufferObjHold(owner.pAgent); 
-    }
-    
+    };    
     _set = function(v){
     	_dll.HP_Agent_SetFreeBufferObjHold(owner.pAgent, v);
     } 
@@ -324,8 +318,7 @@ freeBufferObjHold = {
 maxConnectionCount = {
     _get = function(){
     	return _dll.HP_Agent_GetMaxConnectionCount(owner.pAgent); 
-    }
-    
+    };  
     _set = function(v){
     	_dll.HP_Agent_SetMaxConnectionCount(owner.pAgent, v);
     } 
@@ -334,8 +327,7 @@ maxConnectionCount = {
 workerThreadCount = {
     _get = function(){
     	return _dll.HP_Agent_GetWorkerThreadCount(owner.pAgent); 
-    }
-    
+    };    
     _set = function(v){
     	_dll.HP_Agent_SetWorkerThreadCount(owner.pAgent, v);
     } 
@@ -344,8 +336,7 @@ workerThreadCount = {
 isMarkSilence = {
     _get = function(){
     	return _dll.HP_Agent_IsMarkSilenceB(owner.pAgent); 
-    }
-    
+    };    
     _set = function(v){
     	_dll.HP_Agent_SetMarkSilence(owner.pAgent, v); 
     }

@@ -22,38 +22,38 @@ startWithCast = function(bindAddress, port=0, castMode=-1, castAddress){
 }
 
 stop = function(){
-	if( _dll.HP_UdpNode_StopB( owner.pSocket ) ){
+	if( _dll.HP_UdpNode_StopB(owner.pSocket)){
 		return true; 
 	}
 	return false, owner.lastError; 	
 }
 
 wait = function(milliseconds=-1){
-	return _dll.HP_UdpNode_WaitB( owner.pSocket, milliseconds ); 
+	return _dll.HP_UdpNode_WaitB(owner.pSocket, milliseconds); 
 }
 
-send = function( remoteAddress, remotePort, pBuffer, length){
-	return _dll.HP_UdpNode_SendB( owner.pSocket,remoteAddress, remotePort, pBuffer, length );
+send = function(remoteAddress, remotePort, pBuffer, length){
+	return _dll.HP_UdpNode_SendB(owner.pSocket,remoteAddress, remotePort, pBuffer, length);
 }
 
-sendPart = function( remoteAddress, remotePort, pBuffer, length, offset){
-	return _dll.HP_UdpNode_SendPartB( owner.pSocket,remoteAddress, remotePort, pBuffer, length, offset );
+sendPart = function(remoteAddress, remotePort, pBuffer, length, offset){
+	return _dll.HP_UdpNode_SendPartB(owner.pSocket,remoteAddress, remotePort, pBuffer, length, offset);
 }
 
-sendPackets = function( remoteAddress, remotePort, pBuffers, iCount){
-	return _dll.HP_UdpNode_SendPacketsB( owner.pSocket,remoteAddress, remotePort, pBuffers, iCount );
+sendPackets = function(remoteAddress, remotePort, pBuffers, iCount){
+	return _dll.HP_UdpNode_SendPacketsB( owner.pSocket,remoteAddress, remotePort, pBuffers, iCount);
 }
 
 sendCast = function(pBuffer, length){
-	return _dll.HP_UdpNode_SendCastB( owner.pSocket, pBuffer, length ); 
+	return _dll.HP_UdpNode_SendCastB(owner.pSocket, pBuffer, length); 
 }
 
 sendCastPart = function(pBuffer, length, offset){
-	return !!_dll.HP_UdpNode_SendCastPartB( owner.pSocket, pBuffer, length, offset ); 
+	return !!_dll.HP_UdpNode_SendCastPartB(owner.pSocket, pBuffer, length, offset); 
 }
 
 sendCastPackets = function(pBuffer, count){
-	return !!_dll.HP_UdpNode_SendCastPackets( owner.pSocket, pBuffer, count ); 
+	return !!_dll.HP_UdpNode_SendCastPackets(owner.pSocket, pBuffer, count ); 
 }
 
 getLocalAddress = function(){
@@ -79,10 +79,10 @@ getPendingDataLength = function(){
 
 extra = {
     _get = function(){
-    	return _dll.HP_UdpNode_GetExtraP( owner.pSocket ); 
+    	return _dll.HP_UdpNode_GetExtraP(owner.pSocket); 
     }
     _set = function(pExtra){
-    	_dll.HP_UdpNode_SetExtra( owner.pSocket, pExtra )
+    	_dll.HP_UdpNode_SetExtra(owner.pSocket, pExtra)
     }
 }
 
@@ -106,7 +106,7 @@ lastError = {
 
 lastErrorDesc = {
     _get = function(){
-		var p = _dll.HP_UdpNode_GetLastErrorDescP( owner.pSocket ); 
+		var p = _dll.HP_UdpNode_GetLastErrorDescP(owner.pSocket ); 
 		if( p ){
 			return ..raw.str(p, true);
 		}
@@ -115,37 +115,34 @@ lastErrorDesc = {
 
 castMode = {
     _get = function(){
-    	return _dll.HP_UdpNode_GetCastMode( owner.pSocket ); 
+    	return _dll.HP_UdpNode_GetCastMode(owner.pSocket ); 
     }	
 }
 
 maxDatagramSize = {
     _get = function(){
-    	return _dll.HP_UdpNode_GetMaxDatagramSize( owner.pSocket ); 
-    }
-    
+    	return _dll.HP_UdpNode_GetMaxDatagramSize(owner.pSocket ); 
+    }   
     _set = function(dwMaxDatagramSize){
-    	_dll.HP_UdpNode_SetMaxDatagramSize( owner.pSocket, dwMaxDatagramSize ); 
+    	_dll.HP_UdpNode_SetMaxDatagramSize(owner.pSocket, dwMaxDatagramSize ); 
     }	
 }
 
 multiCastTtl = {
     _get = function(){
-    	return _dll.HP_UdpNode_GetMultiCastTtl( owner.pSocket ); 
-    }
-    
+    	return _dll.HP_UdpNode_GetMultiCastTtl(owner.pSocket); 
+    }  
     _set = function(mcTtl){
-    	_dll.HP_UdpNode_SetMultiCastTtl( owner.pSocket, mcTtl ); 
+    	_dll.HP_UdpNode_SetMultiCastTtl(owner.pSocket, mcTtl); 
     }	
 }
 
 isMultiCastLoop = {
     _get = function(){
-    	return _dll.HP_UdpNode_IsMultiCastLoopB( owner.pSocket ); 
+    	return _dll.HP_UdpNode_IsMultiCastLoopB(owner.pSocket); 
     }
-    
     _set = function(mcLoop){
-    	_dll.HP_UdpNode_SetMultiCastLoop( owner.pSocket, mcLoop )
+    	_dll.HP_UdpNode_SetMultiCastLoop(owner.pSocket, mcLoop)
     }
 }
 
@@ -171,7 +168,6 @@ postReceiveCount = {
 	_get = function(){
 		return _dll.HP_UdpNode_GetPostReceiveCount( owner.pSocket ); 
 	}
-	
 	_set = function(postReceiveCount){
 		_dll.HP_UdpNode_SetPostReceiveCount( owner.pSocket, postReceiveCount )
 	}
@@ -181,7 +177,6 @@ freeBufferPoolSize = {
 	_get = function(){
 		return _dll.HP_UdpNode_GetFreeBufferPoolSize( owner.pSocket ); 
 	}
-	
 	_set = function(freeBufferPoolSize){
 		_dll.HP_UdpNode_SetFreeBufferPoolSize( owner.pSocket, freeBufferPoolSize )
 	}
@@ -191,7 +186,6 @@ freeBufferPoolHold = {
 	_get = function(){
 		return _dll.HP_UdpNode_GetFreeBufferPoolHold( owner.pSocket ); 
 	}
-	
 	_set = function( freeBufferPoolHold ){
 		_dll.HP_UdpNode_SetFreeBufferPoolHold( owner.pSocket, freeBufferPoolHold )
 	}	

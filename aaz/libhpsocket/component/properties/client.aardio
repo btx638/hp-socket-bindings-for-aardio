@@ -39,10 +39,10 @@ stop = function(){
 send = function(buffer, len){
 	if(type(len) == type.number){
 	}
-	elseif( buffer[["_struct"]] ){
+	elseif(buffer[["_struct"]]){
 		len = ..raw.sizeof(buffer);
 	}
-	else {
+	elseif(type(buffer) == type.string){
 		len = #buffer;
 	}
 	return _dll.HP_Client_SendB(owner.pSocket, buffer, len);

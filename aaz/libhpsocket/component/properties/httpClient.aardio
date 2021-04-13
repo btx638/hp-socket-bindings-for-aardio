@@ -9,9 +9,10 @@ namespace aaz.libhpsocket.component.properties.httpClient;
 var _dll = ..aaz.libhpsocket._dll;
 var wsHelper = ..aaz.libhpsocket.helper.websocket;
 var realloc = ..raw.realloc;
+var sizeof = ..raw.sizeof;
 
 sendRequest = function(method="GET", path, headers, body){
-	headers = ..aaz.libhpsocket.helper.headers(headers)
+	headers = ..aaz.libhpsocket.helper.headers(headers);
 	return 	_dll.HP_HttpClient_SendRequestB(owner.pSocket, method, path, headers.struct(), headers.length(), body, #body);
 }
 
@@ -25,22 +26,22 @@ sendChunkData = function(pData, len=0, extensions){
 }
 
 sendPost = function(path, headers, body){
-	headers = ..aaz.libhpsocket.helper.headers(headers)
+	headers = ..aaz.libhpsocket.helper.headers(headers);
 	return 	_dll.HP_HttpClient_SendPostB(owner.pSocket,path,headers.struct(),headers.length(), body, #body);
 }
 
 sendPut = function(path, headers, body){
-	headers = ..aaz.libhpsocket.helper.headers(headers)
+	headers = ..aaz.libhpsocket.helper.headers(headers);
 	return 	_dll.HP_HttpClient_SendPutB(owner.pSocket,path, headers.struct(), headers.length(), body, #body);
 }
 
 sendPatch = function(path, headers, body){
-	headers = ..aaz.libhpsocket.helper.headers(headers)
+	headers = ..aaz.libhpsocket.helper.headers(headers);
 	return 	_dll.HP_HttpClient_SendPatchB(owner.pSocket, path, headers.struct(), headers.length(), body, #body);
 } 
 
 sendGet = function(path = "/", headers){
-	headers = ..aaz.libhpsocket.helper.headers(headers)
+	headers = ..aaz.libhpsocket.helper.headers(headers);
 	return 	_dll.HP_HttpClient_SendGetB(owner.pSocket, path, headers.struct(), headers.length());
 }
 
@@ -50,29 +51,29 @@ sendDelete = function(path, headers){
 } 
 
 sendHead = function(path, headers){
-	headers = ..aaz.libhpsocket.helper.headers(headers)
+	headers = ..aaz.libhpsocket.helper.headers(headers);
 	return 	_dll.HP_HttpClient_SendHeadB(owner.pSocket, path, headers.struct(), headers.length());
 } 
 
 sendTrace = function(path, headers){
-	headers = ..aaz.libhpsocket.helper.headers(headers)
+	headers = ..aaz.libhpsocket.helper.headers(headers);
 	return 	_dll.HP_HttpClient_SendTraceB(owner.pSocket, path, headers.struct(), headers.length());
 } 
 
 sendOptions = function(path, headers){
-	headers = ..aaz.libhpsocket.helper.headers(headers)
+	headers = ..aaz.libhpsocket.helper.headers(headers);
 	return 	_dll.HP_HttpClient_SendOptionsB(owner.pSocket, path, headers.struct(), headers.length());
 } 
 
 sendConnect = function(host, headers){
-	headers = ..aaz.libhpsocket.helper.headers(headers)
+	headers = ..aaz.libhpsocket.helper.headers(headers);
 	return 	_dll.HP_HttpClient_SendConnectB(owner.pSocket, host, headers.struct(), headers.length());
 }
 
 sendWsMessage = function(data, opCode, final=true, mask='\x01\x02\x03\x04', bodyLen=0, reserved){
 	var len = 0;
 	if(data[["_struct"]]){
-		len = ..raw.sizeof(data);
+		len = sizeof(data);
 		opCode = 2;
 	}
 	elseif(type(data) == type.string){
@@ -168,16 +169,16 @@ getAllCookies = function(){
 getWsMessageState = function(){
 	var final = {bool value};
 	var reserved = {BYTE value};
-	var operationCode = {BYTE value};
+	var opCode = {BYTE value};
 	var mask = {INT value};
 	var bodyLen = {LONG value};
 	var bodyRemain = {LONG value};
 	
-	if(_dll.HP_HttpClient_GetWSMessageState(owner.pSocket, final, reserved, operationCode, mask, bodyLen, bodyRemain)){
+	if(_dll.HP_HttpClient_GetWSMessageState(owner.pSocket, final, reserved, opCode, mask, bodyLen, bodyRemain)){
 		return {
 			final = final.value;
 			reserved = reserved.value;
-			operationCode = operationCode.value;
+			opCode = opCode.value;
 			mask = mask.value;
 			bodyLen = bodyLen.value;
 			bodyRemain = bodyRemain.value
@@ -255,8 +256,7 @@ upgradeType = {
 isUseCookie = {
     _get = function(){
     	return _dll.HP_HttpClient_IsUseCookieB(owner.pSocket);  
-    }
-    
+    };
     _set = function(v){
     	_dll.HP_HttpClient_SetUseCookie(owner.pSocket, v)
     } 
